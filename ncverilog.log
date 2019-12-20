@@ -1,0 +1,69 @@
+ncverilog: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s039: Started on Dec 20, 2019 at 13:08:41 CST
+ncverilog
+	+access+rwc
+	tb.v
+file: tb.v
+	module worklib.instruction_set_model:v
+		errors: 0, warnings: 0
+	module worklib.tb_cpu:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.instruction_set_model:v <0x3624503c>
+			streams:   2, words:  5526
+		worklib.tb_cpu:v <0x4c51f2b9>
+			streams:  18, words: 13553
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		              Instances  Unique
+		Modules:              2       2
+		Registers:           25      25
+		Scalar wires:         4       -
+		Vectored wires:       6       -
+		Always blocks:        6       6
+		Initial blocks:       4       4
+		Cont. assignments:    0       5
+		Pseudo assignments:   5       5
+	Writing initial simulation snapshot: worklib.tb_cpu:v
+Loading snapshot worklib.tb_cpu:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+                   0 | rst=x | debug=x | debuger=  x | MEM_ADDR=   x | MEM_IN=         x | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          x
+                   1 | rst=0 | debug=0 | debuger=  x | MEM_ADDR=   x | MEM_IN=         0 | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=00000000000000000000000000000000  |  tb_debug=          x
+                   5 | rst=0 | debug=0 | debuger=  3 | MEM_ADDR=   x | MEM_IN=         0 | MEM_OUT=         x | MEM_CTRL=0 | INS_ADDR=   x | INS_MEM=00000000000000000000000000000000  |  tb_debug=          x
+                  31 | rst=1 | debug=0 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         4 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
+=================================================
+I_MEM[          0]=00000000000000000000000000000000
+I_MEM[          1]=10010000000000000000000000000000
+I_MEM[          2]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          3]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          4]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          5]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          6]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          7]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          8]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+I_MEM[          9]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+=================================================
+                  61 | rst=0 | debug=0 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         4 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
+                  65 | rst=0 | debug=0 | debuger=  3 | MEM_ADDR=   0 | MEM_IN=         4 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   1 | INS_MEM=10010000000000000000000000000000  |  tb_debug=          1
+=================================================
+data_MEM[          0]=         4
+data_MEM[          1]=         x
+data_MEM[          2]=         x
+data_MEM[          3]=         x
+data_MEM[          4]=         x
+data_MEM[          5]=         x
+data_MEM[          6]=         x
+data_MEM[          7]=         x
+data_MEM[          8]=         x
+data_MEM[          9]=         x
+=================================================
+Halt...
+Simulation complete via $finish(1) at time 75 NS + 2
+./tb.v:78         $finish;
+ncsim> exit
+TOOL:	ncverilog	15.20-s039: Exiting on Dec 20, 2019 at 13:08:43 CST  (total: 00:00:02)
