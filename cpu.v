@@ -131,7 +131,7 @@ begin//always @(posedge clk or posedge rst)
         temp_checkcond = 0;
         MEM_C = 0;
  
-    end else if (clk) begin
+    end else begin
         //make mem. unreadable
         MEM_C = 0;
         //fetch
@@ -216,8 +216,6 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = 4;
             end
         endcase
-    end else begin
-        debug_r = 1;
     end
 end//always @(posedge clk or posedge rst)
 
@@ -225,7 +223,6 @@ endmodule // instruction_set_model
 /*
 debug_r code 
 0:undefine
-1:[go into default when running if/else]always @(posedge clk or posedge rst)
 2:[run rst.]
 3:[exe. NOP]
 4:[can't find ins.]go into default @ case(OPCODE)
