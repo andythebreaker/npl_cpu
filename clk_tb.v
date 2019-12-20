@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 `include "clk_test.v"
 `default_nettype none
 
@@ -18,12 +19,12 @@ clk_test clk_t
 localparam CLK_PERIOD = 10;
 always #(CLK_PERIOD/2) clk=~clk;
 
-/*
+
 initial begin
-    dumpfile("tb_clk_test.vcd");
-    dumpvars(0, tb_clk_test);
+    $dumpfile("tb_clk_test.vcd");
+    $dumpvars;
 end
-*/
+
 
 initial begin
     #1 rst<=1'bx;clk<=1'bx;
@@ -32,6 +33,7 @@ initial begin
     #(CLK_PERIOD*3) rst<=0;clk<=0;
     #(CLK_PERIOD*3) data_in=1;
     #(CLK_PERIOD*3) data_in=12;
+    #(CLK_PERIOD*3) data_in=3;
     #(CLK_PERIOD*3) $finish;
 end
 
