@@ -189,21 +189,28 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = (`SRCTYPE)?setcondcode({21'b0, `SRC/*12bit, imm*/}):setcondcode({1'b0, RFILE[`SRC]});
             end
             /*4*/`ADD: begin
+                debug_r =104;
             end
             /*5*/`MUL: begin
+                debug_r =105;
             end
             /*6*/`CMP: begin
+                debug_r =106;
             end
             /*7*/`SHF: begin
+                debug_r =107;
             end
             /*8*/`ROT: begin
+                debug_r =108;
             end
             /*9*/`HLT: begin
                 debug_r = 5;
             end
             /*10*/`DIV: begin
+                debug_r =110;
             end
             /*11*/`RMD: begin
+                debug_r =111;
             end
             default: begin
                 debug_r = 4;
@@ -227,4 +234,11 @@ debug_r code
 7:[sataus reg. Status is different from demand] @ BRA
 8:[do SETCONDCODE]
 9:branch, true, do change pc
+104:opcode case = 4
+105:opcode case = 5
+106:opcode case = 6
+107:opcode case = 7
+108:opcode case = 8
+110:opcode case = 10
+111:opcode case = 11
 */
