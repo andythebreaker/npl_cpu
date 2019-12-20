@@ -5,6 +5,7 @@ module tb_cpu;
 parameter WIDTH = 32;//width of data path
 parameter ADDRSIZE = 12;//size of address field
 parameter MEMSIZE = (1<<ADDRSIZE/*4096*/);//size of memory (2^ADDRSIZE)=2^12
+parameter Forced_stop_number_of_cycles = 20;
 //main reg
 reg [WIDTH-1:0] MEM[0:MEMSIZE-1];//MEMORY
 reg [WIDTH-1:0] I_MEM[0:MEMSIZE-1];//ins. mem.
@@ -91,7 +92,7 @@ initial begin : main_loop
     end
     $display("=================================================");
 
-    #(CLK_PERIOD*20) $finish;
+    #(CLK_PERIOD*Forced_stop_number_of_cycles) $finish;
 end
 
 initial begin : prog_load
