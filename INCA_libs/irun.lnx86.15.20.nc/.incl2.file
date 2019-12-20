@@ -1,2 +1,4 @@
-cpu.v
-/home/ncku_class/vlsi2019/vlsi2006/mydir/npl_cpu/cpu.v
+cpu_sy.v
+/home/ncku_class/vlsi2019/vlsi2006/mydir/npl_cpu/cpu_sy.v
+tsmc18.v
+/home/ncku_class/vlsi2019/vlsi2006/mydir/npl_cpu/tsmc18.v

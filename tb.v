@@ -1,4 +1,7 @@
-`include "cpu.v"
+`timescale 1ns/1ps
+`include "cpu_sy.v"
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+`include "tsmc18.v"
 `default_nettype none
 
 module tb_cpu;
@@ -93,6 +96,14 @@ initial begin : main_loop
     $display("=================================================");
 
     #(CLK_PERIOD*Forced_stop_number_of_cycles) $finish;
+end
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+initial 
+begin
+$sdf_annotate ("sy_cpu.sdf", cpu);
+$dumpfile("cpu_sy.vcd");
+$dumpvars;
 end
 
 initial begin : prog_load
