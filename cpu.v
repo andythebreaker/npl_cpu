@@ -165,6 +165,11 @@ begin//always @(posedge clk or posedge rst)
                     default: debug_r = 6 ;
                 endcase
                 if (temp_checkcond) begin
+                    if (debug) begin
+                        debug_r=9;
+                    end else begin
+                        debug_r=0;
+                    end
                     pc = `DST;
                 end else begin
                     debug_r = 7 ;
@@ -212,6 +217,7 @@ end//always @(posedge clk or posedge rst)
 endmodule // instruction_set_model
 /*
 debug_r code 
+0:undefine
 1:[go into default when running if/else]always @(posedge clk or posedge rst)
 2:[run rst.]
 3:[exe. NOP]
@@ -220,4 +226,5 @@ debug_r code
 6:go in default @ [case (`CCODE)]
 7:[sataus reg. Status is different from demand] @ BRA
 8:[do SETCONDCODE]
+9:branch, true, do change pc
 */

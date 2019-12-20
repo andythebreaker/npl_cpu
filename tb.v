@@ -82,7 +82,7 @@ end
 
 initial begin : main_loop
     #1 rst<=1'b0;clk<=1'b0;
-    debug<=0;MEM_IN<=0;INS_MEM<=0;
+    debug<=1;MEM_IN<=0;INS_MEM<=0;
     #(CLK_PERIOD*3) rst<=1;
     #(CLK_PERIOD*3) rst<=0;clk<=0;
 
