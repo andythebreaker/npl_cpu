@@ -1,1 +1,5 @@
 s1(20Dec2019:13:08:41):  ncverilog +access+rwc tb.v 
+s2(20Dec2019:13:25:34):  ncverilog +access+rwc tb.v 
+s3(20Dec2019:13:27:55):  ncverilog +access+rwc tb.v 
+s4(20Dec2019:13:35:00):  ncverilog +access+rwc tb.v 
+s5(20Dec2019:13:35:15):  ncverilog +access+rwc tb.v 
