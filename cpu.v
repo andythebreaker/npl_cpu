@@ -9,7 +9,11 @@ module instruction_set_model(
     output [0:31] MEM_OUT,/*0:WIDTH-1*/
     output MEM_CTRL,//0:read | 1:write
     output [11:0] INS_ADDR,
-    input [0:31] INS_MEM//always in read mode
+    input [0:31] INS_MEM,//always in read mode
+
+    //-------------------
+    output [32:0] reg_debug_out
+    //-------------------
 );
 //parameter CYCLE = 10;//cycle time
 parameter WIDTH = 32;//width of data path
@@ -26,11 +30,11 @@ reg [SBITS-1:0/*5*/] psr;//Processor Status Register
 reg [ADDRSIZE-1:0/*12*/] pc ;//Program counter
 //reg. for output
 reg [ADDRSIZE-1:0] MEM_D ;
-reg [ADDRSIZE-1:0] INS_D ;
+//reg [ADDRSIZE-1:0] INS_D ;//<X>
 reg [0:WIDTH-1] MEM_O ;
 reg MEM_C;
 assign MEM_ADDR = MEM_D;
-assign INS_ADDR = INS_D;
+assign INS_ADDR = /*<X>*//*INS_D*/pc;
 assign MEM_OUT = MEM_O;
 assign MEM_CTRL = MEM_C;
 /*debug*/
@@ -98,6 +102,10 @@ IR[11:0] : destination address
 //integer
 integer i;
 
+//--------------------------------------------
+assign reg_debug_out = ir;
+//--------------------------------------------
+
 //function
 function [6:0] setcondcode;//Compute the condition codes and set PSR
     input [WIDTH:0] res;//33 bit result register
@@ -132,7 +140,7 @@ begin//always @(posedge clk or posedge rst)
         psr = 0;
         pc = 0;
         MEM_D = 0;
-        INS_D = 0;
+        //INS_D = 0;//<X>
         MEM_O = 0;
         temp_checkcond = 0;
         MEM_C = 0;
@@ -142,14 +150,14 @@ begin//always @(posedge clk or posedge rst)
         MEM_C = 0;
         //fetch
         //ir = INS_MEM;
-        INS_D = pc+1;//<!>
+        //INS_D = pc+1;//<X>
         pc = pc+1;
         //execute
         case (`OPCODE/*ir...*/)
             /*0*/`NOP: begin
                 debug_r = 3;
             end
-            /*1*/`BRA: begin//<!><--didn't use = (?)-->
+            /*1*/`BRA: begin
                 //function checkcond; //Returns 1 if condition code is set .
                 //input [4:0] ccode;
                 case (`CCODE)

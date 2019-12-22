@@ -32,6 +32,7 @@ initial begin
     #(CLK_PERIOD*3) rst<=0;clk<=0;
     #(CLK_PERIOD*3) data_in=1;
     #(CLK_PERIOD*3) data_in=12;
+    #(CLK_PERIOD*3) data_in=5;
     #(CLK_PERIOD*3) $finish;
 end
 

@@ -6,12 +6,14 @@ module clk_test(
 );
 reg data_out;
 
-always@(posedge clk)begin
+always@(posedge clk or posedge rst)begin
     if(rst)begin
-        data_out = 0;
+        data_out <= 0;
     end else begin
     if (data_in > 10) begin
-        data_out = 5;
+        data_out <= 5;
+    end else begin
+        data_out <= 0;        
     end
     end
 end

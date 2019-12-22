@@ -23,6 +23,11 @@ wire [0:31] MEM_OUT;
 wire MEM_CTRL;
 wire [11:0] INS_ADDR;
 reg [0:31] INS_MEM;
+
+//-------------------------------------
+wire [32:0] reg_debug_out;
+//-------------------------------------
+
 //debug
 integer tb_debug;
 integer ot_mem=0;
@@ -38,7 +43,8 @@ instruction_set_model cpu
     .MEM_OUT(MEM_OUT),
     .MEM_CTRL(MEM_CTRL),
     .INS_ADDR(INS_ADDR),
-    .INS_MEM(INS_MEM)
+    .INS_MEM(INS_MEM),
+    .reg_debug_out(reg_debug_out)
 );
 
 always @(MEM_ADDR) begin : always_MEM_ADDR
@@ -57,7 +63,7 @@ always @(MEM_OUT) begin : always_MEM_OUT
     end
 end
 
-localparam CLK_PERIOD = 10;
+localparam CLK_PERIOD = 100;
 always #(CLK_PERIOD/2) clk=~clk;
 
 /*
@@ -68,7 +74,7 @@ end
 */
 
 initial begin : monitor
-    $monitor($time," | rst=%b | debug=%b | debuger=%d | MEM_ADDR=%d | MEM_IN=%d | MEM_OUT=%d | MEM_CTRL=%d | INS_ADDR=%d | INS_MEM=%b  |  tb_debug=%d",rst,debug,debuger,MEM_ADDR,MEM_IN,MEM_OUT,MEM_CTRL,INS_ADDR,INS_MEM,tb_debug);
+    $monitor($time," | rst=%b | debug=%b | debuger=%d | MEM_ADDR=%d | MEM_IN=%d | MEM_OUT=%d | MEM_CTRL=%d | INS_ADDR=%d | INS_MEM=%b  |  tb_debug=%d  |  reg_debug_out=%b",rst,debug,debuger,MEM_ADDR,MEM_IN,MEM_OUT,MEM_CTRL,INS_ADDR,INS_MEM,tb_debug,reg_debug_out);
 end
 
 always@(debuger) begin : stop
@@ -86,8 +92,8 @@ end
 initial begin : main_loop
     #1 rst<=1'b0;clk<=1'b0;
     debug<=1;MEM_IN<=0;INS_MEM<=0;
-    #(CLK_PERIOD*3) rst<=1;
-    #(CLK_PERIOD*3) rst<=0;clk<=0;
+    #(CLK_PERIOD) rst<=1;
+    #(CLK_PERIOD) rst<=0;clk<=0;
 
     $display("=================================================");
     for ( ot_mem= 0; ot_mem<10; ot_mem=ot_mem+1) begin
