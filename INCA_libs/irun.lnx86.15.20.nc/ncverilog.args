@@ -3,4 +3,4 @@
 // Do not modify this file
 //
 +access+rwc
-clk_tb.v
+tb.v

@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
-`include "cpu_sy.v"
+`include "cpu.v"
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-`include "tsmc18.v"
+//`include "tsmc18.v"
 `default_nettype none
 
 module tb_cpu;
@@ -101,8 +101,8 @@ end
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 initial 
 begin
-$sdf_annotate ("sy_cpu.sdf", cpu);
-$dumpfile("cpu_sy.vcd");
+//$sdf_annotate ("sy_cpu.sdf", cpu);
+$dumpfile("cpu.vcd");
 $dumpvars;
 end
 

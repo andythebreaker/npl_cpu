@@ -5,7 +5,7 @@
 -XLMODE
 ./INCA_libs/irun.lnx86.15.20.nc
 -RUNMODE
-clk_tb.v
+tb.v
 -CDSLIB
 ./INCA_libs/irun.lnx86.15.20.nc/cdsrun.lib
 -HDLVAR
