@@ -92,8 +92,8 @@ end
 initial begin : main_loop
     #1 rst<=1'b0;clk<=1'b0;
     debug<=1;MEM_IN<=0;INS_MEM<=0;
-    #(CLK_PERIOD) rst<=1;
-    #(CLK_PERIOD) rst<=0;clk<=0;
+    #4 rst<=1;
+    #4 rst<=0;clk<=0;
 
     $display("=================================================");
     for ( ot_mem= 0; ot_mem<10; ot_mem=ot_mem+1) begin
@@ -101,7 +101,8 @@ initial begin : main_loop
     end
     $display("=================================================");
 
-    #(CLK_PERIOD*Forced_stop_number_of_cycles) $finish;
+    #(CLK_PERIOD*Forced_stop_number_of_cycles) $display("*****************************\nForced_stop\n*****************************");
+    $finish;
 end
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
