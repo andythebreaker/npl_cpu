@@ -6,37 +6,36 @@ WARNING: tb.v:118: $readmemb(i_mem.prog): Not enough words in the file for the r
                    5 | rst=1 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
 =================================================
 I_MEM[          0]=00000000000000000000000000000000
-I_MEM[          1]=00101000000000000010000000000001
-I_MEM[          2]=00101000000000000011000000000010
-I_MEM[          3]=01000000000000000001000000000010
-I_MEM[          4]=00101000000000001010000000000011
-I_MEM[          5]=01001000000000001001000000000011
+I_MEM[          1]=00101000000000000111000000000001
+I_MEM[          2]=00101000000000001000000000000010
+I_MEM[          3]=00101000000000001001000000000011
+I_MEM[          4]=01011000000000000010000000000001
+I_MEM[          5]=01010000000000000011000000000010
 I_MEM[          6]=00110000000000000001000000000000
 I_MEM[          7]=00110000000000000010000000000001
-I_MEM[          8]=00110000000000000011000000000010
-I_MEM[          9]=10010000000000000000000000000000
+I_MEM[          8]=10010000000000000000000000000000
+I_MEM[          9]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 =================================================
                    9 | rst=0 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
-                  50 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   1 | INS_MEM=00101000000000000010000000000001  |  tb_debug=          1
-                 150 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   2 | INS_MEM=00101000000000000011000000000010  |  tb_debug=          1
-                 250 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   3 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   3 | INS_MEM=01000000000000000001000000000010  |  tb_debug=          1
-                 350 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   3 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   4 | INS_MEM=00101000000000001010000000000011  |  tb_debug=          1
-                 450 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=  10 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   5 | INS_MEM=01001000000000001001000000000011  |  tb_debug=          1
-                 550 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=  10 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   6 | INS_MEM=00110000000000000001000000000000  |  tb_debug=          1
-                 650 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         2 | MEM_CTRL=1 | INS_ADDR=   7 | INS_MEM=00110000000000000010000000000001  |  tb_debug=          1
-                 750 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   1 | MEM_IN=         x | MEM_OUT=         5 | MEM_CTRL=1 | INS_ADDR=   8 | INS_MEM=00110000000000000011000000000010  |  tb_debug=          1
-                 850 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=1 | INS_ADDR=   9 | INS_MEM=10010000000000000000000000000000  |  tb_debug=          1
-                 950 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  10 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1050 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  11 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1150 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  12 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1250 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  13 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1350 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  14 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1450 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  15 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1550 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  16 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1650 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  17 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1750 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  18 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1850 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  19 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-                1950 | rst=0 | debug=1 | debuger= 11 | MEM_ADDR=   2 | MEM_IN=         x | MEM_OUT=        19 | MEM_CTRL=0 | INS_ADDR=  20 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
-*****************************
-Forced_stop
-*****************************
+                  50 | rst=0 | debug=1 | debuger=  3 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   1 | INS_MEM=00101000000000000111000000000001  |  tb_debug=          1
+                 150 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   7 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   2 | INS_MEM=00101000000000001000000000000010  |  tb_debug=          1
+                 250 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   8 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   3 | INS_MEM=00101000000000001001000000000011  |  tb_debug=          1
+                 350 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   9 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   4 | INS_MEM=01011000000000000010000000000001  |  tb_debug=          1
+                 450 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   9 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   5 | INS_MEM=01010000000000000011000000000010  |  tb_debug=          1
+                 550 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   9 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   6 | INS_MEM=00110000000000000001000000000000  |  tb_debug=          1
+                 650 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=        14 | MEM_CTRL=1 | INS_ADDR=   7 | INS_MEM=00110000000000000010000000000001  |  tb_debug=          1
+                 750 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   1 | MEM_IN=         x | MEM_OUT=        72 | MEM_CTRL=1 | INS_ADDR=   8 | INS_MEM=10010000000000000000000000000000  |  tb_debug=          1
+=================================================
+data_MEM[          0]=        14
+data_MEM[          1]=        72
+data_MEM[          2]=         x
+data_MEM[          3]=         x
+data_MEM[          4]=         x
+data_MEM[          5]=         x
+data_MEM[          6]=         x
+data_MEM[          7]=         x
+data_MEM[          8]=         x
+data_MEM[          9]=         x
+=================================================
+Halt...
+                 850 | rst=0 | debug=1 | debuger=  5 | MEM_ADDR=   1 | MEM_IN=         x | MEM_OUT=        72 | MEM_CTRL=0 | INS_ADDR=   9 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1

@@ -128,13 +128,14 @@ function [WIDTH-1:0] getsrc;
 endfunction//getsrc
 
 function [WIDTH-1:0] getdst;
-    input  [WIDTH-1:0] in;
+    input [WIDTH-1:0] in;
     begin
         if(`DSTTYPE == `REGTYPE) begin
             getdst = RFILE[`DST];//reg
         end else begin
             //ERROR imm. type
             debug_r = 10;
+            getdst = 0;
         end
     end
     
@@ -232,7 +233,12 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = setcondcode(result);
             end
             /*5*/`MUL: begin
-                debug_r =105;
+                //debug_r =105;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = src1*src2;
+                debug_r = setcondcode(result);
             end
             /*6*/`CMP: begin
                 debug_r =106;
@@ -257,6 +263,7 @@ begin//always @(posedge clk or posedge rst)
             end
         endcase
         //write_result
+        /*you can't put debug_r here //debug_r = 11;*/
         if (
             (`OPCODE == `ADD) ||//4
             (`OPCODE == `MUL) ||//5
@@ -270,10 +277,14 @@ begin//always @(posedge clk or posedge rst)
                 RFILE[`DST] = result;
             end else begin
                 MEM_C = 1;
-                MEM_O = result;
+                MEM_O = result[WIDTH-1:0];
             end
         end else begin
-            debug_r = 11;//don't need do anything write_result
+            /*<!I'm not sure if this thing is right>*/
+            RFILE[`DST] = RFILE[`DST];
+            MEM_C = MEM_C;
+            MEM_O = MEM_O;
+            //debug_r = 11;//don't need do anything write_result
         end
     end
 end//always @(posedge clk or posedge rst)
@@ -291,9 +302,9 @@ debug_r code
 8:[do SETCONDCODE]
 9:branch, true, do change pc
 10:$display("Error:Immediate data can’t be destination.");
-11:[don't need do anything] @ write_result
+//11:[don't need do anything] @ write_result
 //104:opcode case = 4
-105:opcode case = 5
+//105:opcode case = 5
 106:opcode case = 6
 107:opcode case = 7
 108:opcode case = 8
