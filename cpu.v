@@ -256,6 +256,25 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = 4;
             end
         endcase
+        //write_result
+        if (
+            (`OPCODE == `ADD) ||//4
+            (`OPCODE == `MUL) ||//5
+            (`OPCODE == `CMP) ||//6
+            (`OPCODE == `SHF) ||//7
+            (`OPCODE == `ROT) ||//8
+            (`OPCODE == `DIV) ||//10 Division
+            (`OPCODE == `RMD)//11 Remainder
+        ) begin
+            if (`DSTTYPE == `REGTYPE) begin
+                RFILE[`DST] = result;
+            end else begin
+                MEM_C = 1;
+                MEM_O = result;
+            end
+        end else begin
+            debug_r = 11;//don't need do anything write_result
+        end
     end
 end//always @(posedge clk or posedge rst)
 
@@ -272,6 +291,7 @@ debug_r code
 8:[do SETCONDCODE]
 9:branch, true, do change pc
 10:$display("Error:Immediate data can’t be destination.");
+11:[don't need do anything] @ write_result
 //104:opcode case = 4
 105:opcode case = 5
 106:opcode case = 6
