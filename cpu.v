@@ -9,10 +9,10 @@ module instruction_set_model(
     output [0:31] MEM_OUT,/*0:WIDTH-1*/
     output MEM_CTRL,//0:read | 1:write
     output [11:0] INS_ADDR,
-    input [0:31] INS_MEM,//always in read mode
+    input [0:31] INS_MEM//always in read mode
 
     //-------------------
-    output [32:0] reg_debug_out
+    //output [32:0] reg_debug_out
     //-------------------
 );
 //parameter CYCLE = 10;//cycle time
@@ -103,7 +103,7 @@ IR[11:0] : destination address
 integer i;
 
 //--------------------------------------------
-assign reg_debug_out = ir;
+//assign reg_debug_out = ir;
 //--------------------------------------------
 
 //function
@@ -118,6 +118,27 @@ function [6:0] setcondcode;//Compute the condition codes and set PSR
         setcondcode = 8;//debug<!>
     end
 endfunction//setcondcode
+
+function [WIDTH-1:0] getsrc;
+    input [WIDTH-1:0] in;
+    begin
+        if(`SRCTYPE == `REGTYPE) getsrc = RFILE[`SRC];//reg
+        else getsrc = `SRC;//imm. type
+    end
+endfunction//getsrc
+
+function [WIDTH-1:0] getdst;
+    input  [WIDTH-1:0] in;
+    begin
+        if(`DSTTYPE == `REGTYPE) begin
+            getdst = RFILE[`DST];//reg
+        end else begin
+            //ERROR imm. type
+            debug_r = 10;
+        end
+    end
+    
+endfunction//getdst
 
 //negedge -> do fetch
 always @(negedge clk)
@@ -203,7 +224,12 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = (`SRCTYPE)?setcondcode({21'b0, `SRC/*12bit, imm*/}):setcondcode({1'b0, RFILE[`SRC]});
             end
             /*4*/`ADD: begin
-                debug_r =104;
+                //debug_r =104;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = src1+src2;
+                debug_r = setcondcode(result);
             end
             /*5*/`MUL: begin
                 debug_r =105;
@@ -245,7 +271,8 @@ debug_r code
 7:[sataus reg. Status is different from demand] @ BRA
 8:[do SETCONDCODE]
 9:branch, true, do change pc
-104:opcode case = 4
+10:$display("Error:Immediate data can’t be destination.");
+//104:opcode case = 4
 105:opcode case = 5
 106:opcode case = 6
 107:opcode case = 7
