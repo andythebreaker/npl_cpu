@@ -99,6 +99,7 @@ IR[11:0] : destination address
 //L/R
 `define RIGHT  0 // Rotate/Shift Right
 `define LEFT   1 // Rotate/Shift Left
+//Unsynthesizable//<?>
 //integer
 integer i;
 
@@ -241,13 +242,32 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = setcondcode(result);
             end
             /*6*/`CMP: begin
-                debug_r =106;
+                //debug_r =106;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                result = ~src1;
+                debug_r = setcondcode(result);
             end
             /*7*/`SHF: begin
-                debug_r =107;
+                //debug_r =107;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = (src1[ADDRSIZE-1:0] >= 0)?(src2>>src1[ADDRSIZE-1:0]):(src2<<src1[ADDRSIZE-1:0]);
+                debug_r = setcondcode(result);
+                /*The input terminal (source) of the rotation / offset command can be 
+                a "register" or "direct number". 
+                However, if the "direct number" is the source,
+                 the maximum expressible size is 
+                 "the size of ADDR (12)" 
+                 So use the sign of the last 12 yards of the 
+                 judgment source to decide whether to turn left or right*/
             end
             /*8*/`ROT: begin
-                debug_r =108;
+                //debug_r =108;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
             end
             /*9*/`HLT: begin
                 debug_r = 5;
@@ -305,9 +325,9 @@ debug_r code
 //11:[don't need do anything] @ write_result
 //104:opcode case = 4
 //105:opcode case = 5
-106:opcode case = 6
-107:opcode case = 7
-108:opcode case = 8
+//106:opcode case = 6
+//107:opcode case = 7
+//108:opcode case = 8
 110:opcode case = 10
 111:opcode case = 11
 */

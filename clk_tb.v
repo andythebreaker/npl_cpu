@@ -6,6 +6,7 @@ reg clk;
 reg rst;
 reg [15:0] data_in;
 wire [15:0] data_out;
+reg [3:0] t;
 
 clk_test clk_t
 (
@@ -33,11 +34,21 @@ initial begin
     #(CLK_PERIOD*3) data_in=1;
     #(CLK_PERIOD*3) data_in=12;
     #(CLK_PERIOD*3) data_in=5;
+    #(CLK_PERIOD*3) t=4'b0010;
+    #(CLK_PERIOD*3) t=t>>1;
+    #(CLK_PERIOD*3) t=4'b0010;
+    #(CLK_PERIOD*3) t=t>>2;
+    #(CLK_PERIOD*3) t=4'b1111;
+    #(CLK_PERIOD*3) t=t>>2;
+    #(CLK_PERIOD*3) t=4'b1111;
+    #(CLK_PERIOD*3) t=t<<2;
+    #(CLK_PERIOD*3) t=4'b0010;
+    #(CLK_PERIOD*3) t=t<<1;
     #(CLK_PERIOD*3) $finish;
 end
 
 initial begin : monitor
-    $monitor($time,"  |  in=%d  |  out=%d",data_in,data_out);
+    $monitor($time,"  |  in=%d  |  out=%d  |  t=%b",data_in,data_out,t);
 end
 
 endmodule

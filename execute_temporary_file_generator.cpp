@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <windows.h>
+
 using namespace std;
 //ifstream inFile;
 void replaceAll(string &str, const string &from, const string &to)
@@ -17,6 +18,8 @@ void replaceAll(string &str, const string &from, const string &to)
 }
 int main()
 {
+	string ip;
+	cin >> ip;
 	/*
 	inFile.open("cpu_exe.temp");
 	if (!inFile)
@@ -25,7 +28,7 @@ int main()
 		exit(1); // call system to stop
 	}
 	*/
-	ifstream ifs("cpu_exe.temp");
+	ifstream ifs(ip + ".temp");
 	string content((istreambuf_iterator<char>(ifs)),
 				   (istreambuf_iterator<char>()));
 
