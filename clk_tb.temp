@@ -1,18 +1,20 @@
-                   0  |  in=    x  |  out=    x  |  t=xxxx
-                   1  |  in=    0  |  out=    x  |  t=xxxx
-                  31  |  in=    0  |  out=    0  |  t=xxxx
-                  91  |  in=    1  |  out=    0  |  t=xxxx
-                 121  |  in=   12  |  out=    0  |  t=xxxx
-                 125  |  in=   12  |  out=    5  |  t=xxxx
-                 151  |  in=    5  |  out=    5  |  t=xxxx
-                 155  |  in=    5  |  out=    0  |  t=xxxx
-                 181  |  in=    5  |  out=    0  |  t=0010
-                 211  |  in=    5  |  out=    0  |  t=0001
-                 241  |  in=    5  |  out=    0  |  t=0010
-                 271  |  in=    5  |  out=    0  |  t=0000
-                 301  |  in=    5  |  out=    0  |  t=1111
-                 331  |  in=    5  |  out=    0  |  t=0011
-                 361  |  in=    5  |  out=    0  |  t=1111
-                 391  |  in=    5  |  out=    0  |  t=1100
-                 421  |  in=    5  |  out=    0  |  t=0010
-                 451  |  in=    5  |  out=    0  |  t=0100
+                   0  |  in=    x  |  out=    x  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   1  |  in=    0  |  out=    x  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                  31  |  in=    0  |  out=    0  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                  91  |  in=    1  |  out=    0  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 121  |  in=   12  |  out=    0  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 125  |  in=   12  |  out=    5  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 151  |  in=    5  |  out=    5  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 155  |  in=    5  |  out=    0  |  t=xxxx  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 181  |  in=    5  |  out=    0  |  t=0010  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 211  |  in=    5  |  out=    0  |  t=0001  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 241  |  in=    5  |  out=    0  |  t=0010  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 271  |  in=    5  |  out=    0  |  t=0000  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 301  |  in=    5  |  out=    0  |  t=1111  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 331  |  in=    5  |  out=    0  |  t=0011  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 361  |  in=    5  |  out=    0  |  t=1111  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 391  |  in=    5  |  out=    0  |  t=1100  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 421  |  in=    5  |  out=    0  |  t=0010  |  src2=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                 451  |  in=    5  |  out=    0  |  t=0100  |  src2=00000000000000000000000000000011
+                 481  |  in=    5  |  out=    0  |  t=0100  |  src2=10000000000000000000000000000000
+                 511  |  in=    5  |  out=    0  |  t=0011  |  src2=10000000000000000000000000000000
