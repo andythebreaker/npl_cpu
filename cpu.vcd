@@ -1,219 +1,256 @@
 $date
-	Sun Dec 22 21:46:39 2019
+    Dec 23, 2019  17:46:24
 $end
 $version
-	Icarus Verilog
+    TOOL:	ncsim	15.20-s039
 $end
 $timescale
-	1ps
+    1 ps
 $end
+
 $scope module tb_cpu $end
-$var wire 33 ! reg_debug_out [32:0] $end
-$var wire 7 " debuger [6:0] $end
-$var wire 32 # MEM_OUT [0:31] $end
-$var wire 1 $ MEM_CTRL $end
-$var wire 12 % MEM_ADDR [11:0] $end
-$var wire 12 & INS_ADDR [11:0] $end
-$var reg 32 ' INS_MEM [0:31] $end
-$var reg 32 ( MEM_IN [0:31] $end
-$var reg 1 ) clk $end
-$var reg 1 * debug $end
-$var reg 1 + rst $end
-$var integer 32 , ot_mem [31:0] $end
-$var integer 32 - tb_debug [31:0] $end
+$var parameter 32 !    WIDTH  $end
+$var parameter 32 "    ADDRSIZE  $end
+$var parameter 32 #    MEMSIZE  $end
+$var parameter 32 $    Forced_stop_number_of_cycles  $end
+$var reg       1 %    clk  $end
+$var reg       1 &    rst  $end
+$var reg       1 '    debug  $end
+$var wire      7 (    debuger [6:0] $end
+$var wire     12 )    MEM_ADDR [11:0] $end
+$var reg      32 *    MEM_IN [0:31] $end
+$var wire     32 +    MEM_OUT [0:31] $end
+$var wire      1 ,    MEM_CTRL  $end
+$var wire     12 -    INS_ADDR [11:0] $end
+$var reg      32 .    INS_MEM [0:31] $end
+$var wire     33 /    reg_debug_out [32:0] $end
+$var integer  32 0    tb_debug  $end
+$var integer  32 1    ot_mem  $end
+$var parameter 32 2    CLK_PERIOD  $end
+
 $scope module cpu $end
-$var wire 12 . INS_ADDR [11:0] $end
-$var wire 32 / INS_MEM [0:31] $end
-$var wire 12 0 MEM_ADDR [11:0] $end
-$var wire 1 $ MEM_CTRL $end
-$var wire 32 1 MEM_IN [0:31] $end
-$var wire 32 2 MEM_OUT [0:31] $end
-$var wire 1 ) clk $end
-$var wire 1 * debug $end
-$var wire 7 3 debuger [6:0] $end
-$var wire 1 + rst $end
-$var wire 33 4 reg_debug_out [32:0] $end
-$var reg 1 5 MEM_C $end
-$var reg 12 6 MEM_D [11:0] $end
-$var reg 32 7 MEM_O [0:31] $end
-$var reg 7 8 debug_r [6:0] $end
-$var reg 32 9 ir [31:0] $end
-$var reg 12 : pc [11:0] $end
-$var reg 5 ; psr [4:0] $end
-$var reg 33 < result [32:0] $end
-$var reg 32 = src1 [31:0] $end
-$var reg 32 > src2 [31:0] $end
-$var reg 1 ? temp_checkcond $end
-$var integer 32 @ i [31:0] $end
+$var wire      1 3    clk  $end
+$var wire      1 4    rst  $end
+$var wire      1 5    debug  $end
+$var wire      7 (    debuger [6:0] $end
+$var wire     12 )    MEM_ADDR [11:0] $end
+$var wire     32 6    MEM_IN [0:31] $end
+$var wire     32 +    MEM_OUT [0:31] $end
+$var wire      1 ,    MEM_CTRL  $end
+$var wire     12 -    INS_ADDR [11:0] $end
+$var wire     32 7    INS_MEM [0:31] $end
+$var wire     33 /    reg_debug_out [32:0] $end
+$var parameter 32 8    WIDTH  $end
+$var parameter 32 9    ADDRSIZE  $end
+$var parameter 32 :    MAXREGS  $end
+$var parameter 32 ;    SBITS  $end
+$var reg      32 <    ir [31:0] $end
+$var reg      32 =    src1 [31:0] $end
+$var reg      32 >    src2 [31:0] $end
+$var reg      33 ?    result [32:0] $end
+$var reg       5 @    psr [4:0] $end
+$var reg      12 A    pc [11:0] $end
+$var reg      12 B    MEM_D [11:0] $end
+$var reg      32 C    MEM_O [0:31] $end
+$var reg       1 D    MEM_C  $end
+$var reg       7 E    debug_r [6:0] $end
+$var reg       1 F    temp_checkcond  $end
+$var integer  32 G    i  $end
+
 $scope function setcondcode $end
-$var reg 33 A res [32:0] $end
-$var reg 7 B setcondcode [6:0] $end
+$var reg       7 H    setcondcode [6:0] $end
+$var reg      33 I    res [32:0] $end
 $upscope $end
+
 $upscope $end
-$scope begin always_INS_ADDR $end
+
 $upscope $end
-$scope begin always_MEM_ADDR $end
-$upscope $end
-$scope begin always_MEM_OUT $end
-$upscope $end
-$scope begin main_loop $end
-$upscope $end
-$scope begin monitor $end
-$upscope $end
-$scope begin prog_load $end
-$upscope $end
-$scope begin stop $end
-$upscope $end
-$upscope $end
+
 $enddefinitions $end
-#0
 $dumpvars
-bx B
-bx A
-bx @
-x?
-bx >
-bx =
-bx <
-bx ;
-bx :
-bx 9
-bx 8
-bx 7
-bx 6
-x5
-b0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 4
-bx 3
-bx 2
-bx 1
-bx 0
-bx /
-bx .
-bx -
-b0 ,
-x+
-x*
-x)
+b101 ;
+b10000 :
+b1100 9
+b100000 8
+b1100100 2
+b10100 $
+b1000000000000 #
+b1100 "
+b100000 !
+x%
+x&
+x'
 bx (
-bx '
-bx &
-bx %
-x$
-bx #
-bx "
-b0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx !
+bx )
+bx *
+bx +
+x,
+bx -
+bx .
+b0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx /
+bx 0
+b0 1
+x3
+x4
+x5
+bx 6
+bx 7
+bx <
+bx =
+bx >
+bx ?
+bx @
+bx A
+bx B
+bx C
+xD
+bx E
+xF
+bx G
+bx H
+bx I
 $end
 #1000
-b0 !
-b0 4
-b0 9
-b0 '
-b0 /
-b0 (
-b0 1
-1*
-0)
-0+
-#5000
-b1 -
-b101 (
-b101 1
-0$
-05
-0?
-b0 #
-b0 2
-b0 7
-b0 %
-b0 0
-b0 6
-b0 &
+0&
+0%
+1'
+b0 *
 b0 .
-b0 :
-b0 ;
+b0 7
+b0 6
+15
+03
+04
 b0 <
-b0 >
+b0 /
+#5000
+1&
+14
+b10 E
+b0 G
+b1 G
+b10 G
+b11 G
+b100 G
+b101 G
+b110 G
+b111 G
+b1000 G
+b1001 G
+b1010 G
+b1011 G
+b1100 G
+b1101 G
+b1110 G
+b1111 G
+b10000 G
 b0 =
-b10000 @
-b10 "
-b10 3
-b10 8
-1+
-#9000
-0+
-b1010 ,
-#50000
-b10000000000000000000000000011 '
-b10000000000000000000000000011 /
-b11 "
-b11 3
-b11 8
-b1 &
-b1 .
-b1 :
-1)
-#100000
-b10000000000000000000000000011 !
-b10000000000000000000000000011 4
-b10000000000000000000000000011 9
-0)
-#150000
-b101000000000000000000000000001 '
-b101000000000000000000000000001 /
-b1001 "
-b1001 3
-b1001 8
-1?
-b11 &
-b11 .
-b11 :
-1)
-#200000
-b101000000000000000000000000001 !
-b101000000000000000000000000001 4
-b101000000000000000000000000001 9
-0)
-#250000
-b10010000000000000000000000101 '
-b10010000000000000000000000101 /
-b1000 "
-b1000 3
-b1000 8
-b1000 B
-b1010 ;
+b0 >
+b0 ?
+b0 @
 b0 A
-b100 &
-b100 .
-b100 :
-1)
+b0 B
+b0 C
+0F
+0D
+0,
+b0 +
+b0 )
+b0 -
+b10 (
+b1 0
+b101 *
+b101 6
+#9000
+b1 1
+b10 1
+b11 1
+b100 1
+b101 1
+b110 1
+b111 1
+b1000 1
+b1001 1
+b1010 1
+0&
+04
+#50000
+1%
+13
+b1 A
+b11 E
+b11 (
+b1 -
+b10000000000000000000000000011 .
+b10000000000000000000000000011 7
+#100000
+0%
+03
+b10000000000000000000000000011 <
+b10000000000000000000000000011 /
+#150000
+1%
+13
+b10 A
+1F
+b1001 E
+b11 A
+b1001 (
+b11 -
+b101000000000000000000000000001 .
+b101000000000000000000000000001 7
+#200000
+0%
+03
+b101000000000000000000000000001 <
+b101000000000000000000000000001 /
+#250000
+1%
+13
+b100 A
+b0 I
+b10 @
+b1010 @
+b1000 H
+b1000 E
+b1000 (
+b100 -
+b10010000000000000000000000101 .
+b10010000000000000000000000101 7
 #300000
-b10010000000000000000000000101 !
-b10010000000000000000000000101 4
-b10010000000000000000000000101 9
-0)
+0%
+03
+b10010000000000000000000000101 <
+b10010000000000000000000000101 /
 #350000
-b10010000000000000000000000000000 '
-b10010000000000000000000000000000 /
-b1001 "
-b1001 3
-b1001 8
-b101 &
-b101 .
-b101 :
-1)
+1%
+13
+b101 A
+b1001 E
+b1001 (
+b101 -
+b10010000000000000000000000000000 .
+b10010000000000000000000000000000 7
 #400000
-b10010000000000000000000000000000 !
-b10010000000000000000000000000000 4
-b10010000000000000000000000000000 9
-0)
+0%
+03
+b10010000000000000000000000000000 <
+b10010000000000000000000000000000 /
 #450000
-b1010 ,
-b110000000000000001000000000001 '
-b110000000000000001000000000001 /
-b101 "
-b101 3
-b101 8
-b110 &
-b110 .
-b110 :
-1)
+1%
+13
+b110 A
+b101 E
+b101 (
+b110 -
+b0 1
+b1 1
+b10 1
+b11 1
+b100 1
+b101 1
+b110 1
+b111 1
+b1000 1
+b1001 1
+b1010 1
