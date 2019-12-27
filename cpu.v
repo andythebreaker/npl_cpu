@@ -9,10 +9,10 @@ module instruction_set_model(
     output [0:31] MEM_OUT,/*0:WIDTH-1*/
     output MEM_CTRL,//0:read | 1:write
     output [11:0] INS_ADDR,
-    input [0:31] INS_MEM,//always in read mode
+    input [0:31] INS_MEM//always in read mode
 
     //-------------------
-    output [32:0] reg_debug_out
+    //output [32:0] reg_debug_out
     //-------------------
 );
 //parameter CYCLE = 10;//cycle time
@@ -104,8 +104,8 @@ IR[11:0] : destination address
 integer i;
 
 //--------------------------------------------
-reg [32:0] reg_debug_o;
-assign reg_debug_out = reg_debug_o;
+//reg [32:0] reg_debug_o;
+//assign reg_debug_out = reg_debug_o;
 //--------------------------------------------
 
 //function
@@ -143,6 +143,16 @@ function [WIDTH-1:0] getdst;
     
 endfunction//getdst
 
+function [WIDTH-1:0] division;
+    input [WIDTH-1:0] a;
+    input [WIDTH-1:0] b;
+    //always@ (a or b)
+    begin
+        
+    end
+    
+endfunction
+
 //negedge -> do fetch
 always @(negedge clk)
 begin
@@ -169,7 +179,7 @@ begin//always @(posedge clk or posedge rst)
         temp_checkcond = 0;
         MEM_C = 0;
         //-------------------
-        reg_debug_o = 0;
+        //reg_debug_o = 0;
         //-------------------
  
     end else begin
@@ -257,7 +267,7 @@ begin//always @(posedge clk or posedge rst)
                 psr = 0;//clearcondcode
                 src1 = getsrc(ir);
                 src2 = getdst(ir);
-                result = (src1[ADDRSIZE-1:0] >= 0)?(src2>>src1[ADDRSIZE-1:0]):(src2<<src1[ADDRSIZE-1:0]);
+                result = (~src1[ADDRSIZE-1])?(src2>>src1[ADDRSIZE-1:0]):(src2<<(-src1[ADDRSIZE-1:0]));
                 debug_r = setcondcode(result);
                 /*The input terminal (source) of the rotation / offset command can be 
                 a "register" or "direct number". 
@@ -272,21 +282,13 @@ begin//always @(posedge clk or posedge rst)
                 psr = 0;//clearcondcode
                 src1 = getsrc(ir);
                 src2 = getdst(ir);
-                if (~src1[ADDRSIZE-1/*:0*/]/*>=0*//*right*/) begin
-                    //result[WIDTH-1:WIDTH-1-src1[ADDRSIZE-1:0]]=src2[0:src1[ADDRSIZE-1:0]-1];
+                if (~src1[ADDRSIZE-1]/*right*/) begin
                     result = ( src2 >> src1[ADDRSIZE-1:0] ) | ( src2 << ( WIDTH -src1[ADDRSIZE-1:0] ) );
                 end else begin/*left*/
-                    //bit_rotate_left
-                    //Bitwise or not equal to||
                     result[32]=0;
                     result[31:0] = ( src2 << ( -src1[ADDRSIZE-1:0] ) ) | ( src2 >> ( WIDTH -( -src1[ADDRSIZE-1:0] ) ) );
-                    //result=33'b000000000000000000000000000000001;
-                    //debug_r=0;
                 end
                 debug_r = setcondcode(result);
-                    //debug_r=(src1[ADDRSIZE-1:0])?1:0;
-                    //reg_debug_o=( src2 << ( -src1[ADDRSIZE-1:0] ) ) | ( src2 >> ( WIDTH -( -src1[ADDRSIZE-1:0] ) ) );
-                    //reg_debug_o=(src1[ADDRSIZE-1:0])?1:0;
             end
             /*9*/`HLT: begin
                 debug_r = 5;

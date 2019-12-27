@@ -25,7 +25,7 @@ wire [11:0] INS_ADDR;
 reg [0:31] INS_MEM;
 
 //-------------------------------------
-wire [32:0] reg_debug_out;
+//wire [32:0] reg_debug_out;
 //-------------------------------------
 
 //debug
@@ -43,8 +43,8 @@ instruction_set_model cpu
     .MEM_OUT(MEM_OUT),
     .MEM_CTRL(MEM_CTRL),
     .INS_ADDR(INS_ADDR),
-    .INS_MEM(INS_MEM),
-    .reg_debug_out(reg_debug_out)
+    .INS_MEM(INS_MEM)
+    //.reg_debug_out(reg_debug_out)
 );
 
 always @(MEM_ADDR) begin : always_MEM_ADDR
@@ -74,7 +74,7 @@ end
 */
 
 initial begin : monitor
-    $monitor($time," | rst=%b | debug=%b | debuger=%d | MEM_ADDR=%d | MEM_IN=%d | MEM_OUT=%d | MEM_CTRL=%d | INS_ADDR=%d | INS_MEM=%b  |  tb_debug=%d  |  reg_debug_out=%b",rst,debug,debuger,MEM_ADDR,MEM_IN,MEM_OUT,MEM_CTRL,INS_ADDR,INS_MEM,tb_debug,reg_debug_out);
+    $monitor($time," | rst=%b | debug=%b | debuger=%d | MEM_ADDR=%d | MEM_IN=%d | MEM_OUT=%d | MEM_CTRL=%d | INS_ADDR=%d | INS_MEM=%b  |  tb_debug=%d"/*  |  reg_debug_out=%b"*/,rst,debug,debuger,MEM_ADDR,MEM_IN,MEM_OUT,MEM_CTRL,INS_ADDR,INS_MEM,tb_debug/*,reg_debug_out*/);
 end
 
 always@(debuger) begin : stop

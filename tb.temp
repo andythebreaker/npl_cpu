@@ -1,13 +1,13 @@
 VCD info: dumpfile cpu.vcd opened for output.
 WARNING: tb.v:117: $readmemb(mem.prog): Not enough words in the file for the requested range [0:4095].
 WARNING: tb.v:118: $readmemb(i_mem.prog): Not enough words in the file for the requested range [0:4095].
-                   0 | rst=x | debug=x | debuger=  x | MEM_ADDR=   x | MEM_IN=         x | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          x  |  reg_debug_out=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                   1 | rst=0 | debug=1 | debuger=  x | MEM_ADDR=   x | MEM_IN=         0 | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=00000000000000000000000000000000  |  tb_debug=          x  |  reg_debug_out=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                   5 | rst=1 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
+                   0 | rst=x | debug=x | debuger=  x | MEM_ADDR=   x | MEM_IN=         x | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          x
+                   1 | rst=0 | debug=1 | debuger=  x | MEM_ADDR=   x | MEM_IN=         0 | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=00000000000000000000000000000000  |  tb_debug=          x
+                   5 | rst=1 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
 =================================================
 I_MEM[          0]=00000000000000000000000000000000
-I_MEM[          1]=00101000000000000011000000000001
-I_MEM[          2]=10001000111111111111000000000001
+I_MEM[          1]=00101000000000000100000000000001
+I_MEM[          2]=01111000111111111111000000000001
 I_MEM[          3]=00110000000000000001000000000000
 I_MEM[          4]=10010000000000000000000000000000
 I_MEM[          5]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -16,13 +16,13 @@ I_MEM[          7]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 I_MEM[          8]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 I_MEM[          9]=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 =================================================
-                   9 | rst=0 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
-                  50 | rst=0 | debug=1 | debuger=  3 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   1 | INS_MEM=00101000000000000011000000000001  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
-                 150 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   3 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   2 | INS_MEM=10001000111111111111000000000001  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
-                 250 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   3 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   3 | INS_MEM=00110000000000000001000000000000  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
-                 350 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         6 | MEM_CTRL=1 | INS_ADDR=   4 | INS_MEM=10010000000000000000000000000000  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
+                   9 | rst=0 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1
+                  50 | rst=0 | debug=1 | debuger=  3 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   1 | INS_MEM=00101000000000000100000000000001  |  tb_debug=          1
+                 150 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   4 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   2 | INS_MEM=01111000111111111111000000000001  |  tb_debug=          1
+                 250 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   4 | MEM_IN=         x | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   3 | INS_MEM=00110000000000000001000000000000  |  tb_debug=          1
+                 350 | rst=0 | debug=1 | debuger=  8 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         8 | MEM_CTRL=1 | INS_ADDR=   4 | INS_MEM=10010000000000000000000000000000  |  tb_debug=          1
 =================================================
-data_MEM[          0]=         6
+data_MEM[          0]=         8
 data_MEM[          1]=         x
 data_MEM[          2]=         x
 data_MEM[          3]=         x
@@ -34,4 +34,4 @@ data_MEM[          8]=         x
 data_MEM[          9]=         x
 =================================================
 Halt...
-                 450 | rst=0 | debug=1 | debuger=  5 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         6 | MEM_CTRL=0 | INS_ADDR=   5 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1  |  reg_debug_out=000000000000000000000000000000000
+                 450 | rst=0 | debug=1 | debuger=  5 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         8 | MEM_CTRL=0 | INS_ADDR=   5 | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          1
