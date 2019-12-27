@@ -144,10 +144,10 @@ function [WIDTH-1:0] getdst;
 endfunction//getdst
 
 //negedge -> do fetch
-always @(negedge clk)
+/*always @(negedge clk)
 begin
 	ir = INS_MEM;
-end
+end*/
 
 always @(posedge clk or posedge rst)
 begin//always @(posedge clk or posedge rst)
@@ -176,7 +176,7 @@ begin//always @(posedge clk or posedge rst)
         //make mem. unreadable
         MEM_C = 0;
         //fetch
-        //ir = INS_MEM;
+        ir = INS_MEM;
         //INS_D = pc+1;//<X>
         pc = pc+1;
         //execute
