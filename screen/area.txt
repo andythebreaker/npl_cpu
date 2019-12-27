@@ -1,0 +1,29 @@
+****************************************
+Report : area
+Design : instruction_set_model
+Version: P-2019.03
+Date   : Fri Dec 27 15:58:05 2019
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    slow (File: /home/ncku_class/vlsi2019/vlsi2006/mydir/slow.db)
+
+Number of ports:                          384
+Number of nets:                          8165
+Number of cells:                         7626
+Number of combinational cells:           7008
+Number of sequential cells:               613
+Number of macros/black boxes:               0
+Number of buf/inv:                       1024
+Number of references:                      46
+
+Combinational area:             133807.768003
+Buf/Inv area:                     7071.926488
+Noncombinational area:           42814.094788
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                176621.862791
+Total area:                 undefined

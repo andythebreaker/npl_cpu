@@ -1,0 +1,47 @@
+****************************************
+Report : power
+        -analysis_effort low
+Design : instruction_set_model
+Version: P-2019.03
+Date   : Fri Dec 27 15:58:12 2019
+****************************************
+
+
+Library(s) Used:
+
+    slow (File: /home/ncku_class/vlsi2019/vlsi2006/mydir/slow.db)
+
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.62 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  = 375.3726 uW   (90%)
+  Net Switching Power  =  42.2576 uW   (10%)
+                         ---------
+Total Dynamic Power    = 417.6302 uW  (100%)
+
+Cell Leakage Power     =   5.8301 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register           0.3516        3.1604e-04        1.3609e+06            0.3532  (  83.42%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  2.3808e-02        4.1942e-02        4.4692e+06        7.0219e-02  (  16.58%)
+--------------------------------------------------------------------------------------------------
+Total              0.3754 mW     4.2258e-02 mW     5.8301e+06 pW         0.4235 mW

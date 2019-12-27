@@ -1,8 +1,8 @@
 
 `timescale 1ns/1ps
-`include "cpu.v"
+`include "cpu_sy.v"
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-//`include "tsmc18.v"
+`include "tsmc18.v"
 `default_nettype none
 
 module tb_cpu;
@@ -118,6 +118,8 @@ initial begin : prog_load
     $readmemb("mem.prog",MEM);
     $readmemb("i_mem.prog",I_MEM);
 end
+
+initial $sdf_annotate("cpu.sdf",cpu);
 
 endmodule
 `default_nettype wire

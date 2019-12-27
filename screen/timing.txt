@@ -1,0 +1,107 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : instruction_set_model
+Version: P-2019.03
+Date   : Fri Dec 27 15:58:18 2019
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: RFILE_reg[9][2]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: psr_reg[2] (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                  50.00      50.00
+  clock network delay (ideal)                             0.00      50.00
+  RFILE_reg[9][2]/CK (DFFRHQX1)                           0.00      50.00 r
+  RFILE_reg[9][2]/Q (DFFRHQX1)                            0.44      50.44 r
+  U9268/Y (AOI22X1)                                       0.15      50.59 f
+  U9269/Y (NAND4X1)                                       0.18      50.77 r
+  U9270/Y (OR2X1)                                         0.24      51.00 r
+  U7063/Y (OAI21XL)                                       0.11      51.12 f
+  U7062/Y (BUFX3)                                         0.28      51.39 f
+  U4265/Y (INVX1)                                         1.61      53.00 r
+  mult_245/a[2] (instruction_set_model_DW_mult_uns_0)     0.00      53.00 r
+  mult_245/U1100/Y (INVX1)                                0.32      53.32 f
+  mult_245/U1063/Y (INVX1)                                0.75      54.08 r
+  mult_245/U1331/Y (XNOR2X1)                              0.41      54.49 f
+  mult_245/U1057/Y (OR2X2)                                0.28      54.77 f
+  mult_245/U1060/Y (INVX1)                                0.84      55.60 r
+  mult_245/U1237/Y (AOI22X1)                              0.26      55.86 f
+  mult_245/U1236/Y (XOR2X1)                               0.31      56.18 f
+  mult_245/U178/CO (ADDHXL)                               0.19      56.37 f
+  mult_245/U177/CO (ADDHXL)                               0.19      56.55 f
+  mult_245/U176/CO (ADDHXL)                               0.19      56.74 f
+  mult_245/U175/CO (ADDFX2)                               0.34      57.08 f
+  mult_245/U174/CO (ADDFX2)                               0.35      57.43 f
+  mult_245/U173/CO (ADDFX2)                               0.35      57.77 f
+  mult_245/U172/CO (ADDFX2)                               0.35      58.12 f
+  mult_245/U171/CO (ADDFX2)                               0.35      58.47 f
+  mult_245/U170/CO (ADDFX2)                               0.35      58.82 f
+  mult_245/U169/CO (ADDFX2)                               0.35      59.17 f
+  mult_245/U168/CO (ADDFX2)                               0.35      59.52 f
+  mult_245/U167/CO (ADDFX2)                               0.35      59.87 f
+  mult_245/U166/CO (ADDFX2)                               0.35      60.21 f
+  mult_245/U165/CO (ADDFX2)                               0.35      60.56 f
+  mult_245/U164/CO (ADDFX2)                               0.35      60.91 f
+  mult_245/U163/CO (ADDFX2)                               0.35      61.26 f
+  mult_245/U162/CO (ADDFX2)                               0.35      61.61 f
+  mult_245/U161/CO (ADDFX2)                               0.35      61.96 f
+  mult_245/U160/CO (ADDFX2)                               0.35      62.31 f
+  mult_245/U159/CO (ADDFX2)                               0.35      62.66 f
+  mult_245/U158/CO (ADDFX2)                               0.35      63.00 f
+  mult_245/U157/CO (ADDFX2)                               0.35      63.35 f
+  mult_245/U156/CO (ADDFX2)                               0.35      63.70 f
+  mult_245/U155/CO (ADDFX2)                               0.35      64.05 f
+  mult_245/U154/CO (ADDFX2)                               0.35      64.40 f
+  mult_245/U153/CO (ADDFX2)                               0.35      64.75 f
+  mult_245/U152/CO (ADDFX2)                               0.35      65.10 f
+  mult_245/U151/CO (ADDFX2)                               0.35      65.44 f
+  mult_245/U150/CO (ADDFX2)                               0.35      65.79 f
+  mult_245/U149/CO (ADDFX2)                               0.35      66.14 f
+  mult_245/U148/CO (ADDFX2)                               0.35      66.49 f
+  mult_245/U147/CO (ADDFX2)                               0.35      66.84 f
+  mult_245/U1183/Y (XOR2X1)                               0.27      67.11 r
+  mult_245/U1182/Y (XOR2X1)                               0.34      67.45 r
+  mult_245/product[32] (instruction_set_model_DW_mult_uns_0)
+                                                          0.00      67.45 r
+  U4267/Y (XOR2X1)                                        0.29      67.74 r
+  U3764/Y (XOR2X1)                                        0.26      68.00 r
+  U3762/Y (XOR2X1)                                        0.27      68.27 r
+  U3761/Y (XNOR2X1)                                       0.28      68.55 r
+  U3768/Y (XOR2X1)                                        0.26      68.81 r
+  U3766/Y (XOR2X1)                                        0.26      69.07 r
+  U3765/Y (XOR2X1)                                        0.26      69.33 r
+  U3772/Y (XOR2X1)                                        0.26      69.59 r
+  U3770/Y (XOR2X1)                                        0.26      69.85 r
+  U3769/Y (XOR2X1)                                        0.26      70.11 r
+  U3775/Y (XOR2X1)                                        0.26      70.38 r
+  U3773/Y (XOR2X1)                                        0.26      70.64 r
+  U7061/Y (XOR2X1)                                        0.27      70.90 r
+  U7059/Y (XOR2X1)                                        0.27      71.17 f
+  U7058/Y (AOI22X1)                                       0.18      71.35 r
+  U5277/Y (NAND4X1)                                       0.10      71.45 f
+  psr_reg[2]/D (DFFRHQX1)                                 0.00      71.45 f
+  data arrival time                                                 71.45
+
+  clock clk (rise edge)                                 150.00     150.00
+  clock network delay (ideal)                             0.00     150.00
+  psr_reg[2]/CK (DFFRHQX1)                                0.00     150.00 r
+  library setup time                                     -0.37     149.63
+  data required time                                               149.63
+  --------------------------------------------------------------------------
+  data required time                                               149.63
+  data arrival time                                                -71.45
+  --------------------------------------------------------------------------
+  slack (MET)                                                       78.18
+
+
