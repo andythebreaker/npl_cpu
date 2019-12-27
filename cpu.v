@@ -143,16 +143,6 @@ function [WIDTH-1:0] getdst;
     
 endfunction//getdst
 
-function [WIDTH-1:0] division;
-    input [WIDTH-1:0] a;
-    input [WIDTH-1:0] b;
-    //always@ (a or b)
-    begin
-        
-    end
-    
-endfunction
-
 //negedge -> do fetch
 always @(negedge clk)
 begin
