@@ -9,10 +9,10 @@ module instruction_set_model(
     output [0:31] MEM_OUT,/*0:WIDTH-1*/
     output MEM_CTRL,//0:read | 1:write
     output [11:0] INS_ADDR,
-    input [0:31] INS_MEM,//always in read mode
+    input [0:31] INS_MEM//always in read mode
 
     //-------------------
-    output [32:0] reg_debug_out
+    //output [32:0] reg_debug_out
     //-------------------
 );
 //parameter CYCLE = 10;//cycle time
@@ -99,11 +99,13 @@ IR[11:0] : destination address
 //L/R
 `define RIGHT  0 // Rotate/Shift Right
 `define LEFT   1 // Rotate/Shift Left
+//Unsynthesizable//<?>
 //integer
 integer i;
 
 //--------------------------------------------
-assign reg_debug_out = ir;
+//reg [32:0] reg_debug_o;
+//assign reg_debug_out = reg_debug_o;
 //--------------------------------------------
 
 //function
@@ -118,6 +120,38 @@ function [6:0] setcondcode;//Compute the condition codes and set PSR
         setcondcode = 8;//debug<!>
     end
 endfunction//setcondcode
+
+function [WIDTH-1:0] getsrc;
+    input [WIDTH-1:0] in;
+    begin
+        if(`SRCTYPE == `REGTYPE) getsrc = RFILE[`SRC];//reg
+        else getsrc = `SRC;//imm. type
+    end
+endfunction//getsrc
+
+function [WIDTH-1:0] getdst;
+    input [WIDTH-1:0] in;
+    begin
+        if(`DSTTYPE == `REGTYPE) begin
+            getdst = RFILE[`DST];//reg
+        end else begin
+            //ERROR imm. type
+            debug_r = 10;
+            getdst = 0;
+        end
+    end
+    
+endfunction//getdst
+
+function [WIDTH-1:0] division;
+    input [WIDTH-1:0] a;
+    input [WIDTH-1:0] b;
+    //always@ (a or b)
+    begin
+        
+    end
+    
+endfunction
 
 //negedge -> do fetch
 always @(negedge clk)
@@ -144,6 +178,9 @@ begin//always @(posedge clk or posedge rst)
         MEM_O = 0;
         temp_checkcond = 0;
         MEM_C = 0;
+        //-------------------
+        //reg_debug_o = 0;
+        //-------------------
  
     end else begin
         //make mem. unreadable
@@ -203,19 +240,55 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = (`SRCTYPE)?setcondcode({21'b0, `SRC/*12bit, imm*/}):setcondcode({1'b0, RFILE[`SRC]});
             end
             /*4*/`ADD: begin
-                debug_r =104;
+                //debug_r =104;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = src1+src2;
+                debug_r = setcondcode(result);
             end
             /*5*/`MUL: begin
-                debug_r =105;
+                //debug_r =105;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = src1*src2;
+                debug_r = setcondcode(result);
             end
             /*6*/`CMP: begin
-                debug_r =106;
+                //debug_r =106;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                result = ~src1;
+                debug_r = setcondcode(result);
             end
             /*7*/`SHF: begin
-                debug_r =107;
+                //debug_r =107;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                result = (~src1[ADDRSIZE-1])?(src2>>src1[ADDRSIZE-1:0]):(src2<<(-src1[ADDRSIZE-1:0]));
+                debug_r = setcondcode(result);
+                /*The input terminal (source) of the rotation / offset command can be 
+                a "register" or "direct number". 
+                However, if the "direct number" is the source,
+                 the maximum expressible size is 
+                 "the size of ADDR (12)" 
+                 So use the sign of the last 12 yards of the 
+                 judgment source to decide whether to turn left or right*/
             end
             /*8*/`ROT: begin
-                debug_r =108;
+                //debug_r =108;
+                psr = 0;//clearcondcode
+                src1 = getsrc(ir);
+                src2 = getdst(ir);
+                if (~src1[ADDRSIZE-1]/*right*/) begin
+                    result = ( src2 >> src1[ADDRSIZE-1:0] ) | ( src2 << ( WIDTH -src1[ADDRSIZE-1:0] ) );
+                end else begin/*left*/
+                    result[32]=0;
+                    result[31:0] = ( src2 << ( -src1[ADDRSIZE-1:0] ) ) | ( src2 >> ( WIDTH -( -src1[ADDRSIZE-1:0] ) ) );
+                end
+                debug_r = setcondcode(result);
             end
             /*9*/`HLT: begin
                 debug_r = 5;
@@ -230,6 +303,30 @@ begin//always @(posedge clk or posedge rst)
                 debug_r = 4;
             end
         endcase
+        //write_result
+        /*you can't put debug_r here //debug_r = 11;*/
+        if (
+            (`OPCODE == `ADD) ||//4
+            (`OPCODE == `MUL) ||//5
+            (`OPCODE == `CMP) ||//6
+            (`OPCODE == `SHF) ||//7
+            (`OPCODE == `ROT) ||//8
+            (`OPCODE == `DIV) ||//10 Division
+            (`OPCODE == `RMD)//11 Remainder
+        ) begin
+            if (`DSTTYPE == `REGTYPE) begin
+                RFILE[`DST] = result;
+            end else begin
+                MEM_C = 1;
+                MEM_O = result[WIDTH-1:0];
+            end
+        end else begin
+            /*<!I'm not sure if this thing is right>*/
+            RFILE[`DST] = RFILE[`DST];
+            MEM_C = MEM_C;
+            MEM_O = MEM_O;
+            //debug_r = 11;//don't need do anything write_result
+        end
     end
 end//always @(posedge clk or posedge rst)
 
@@ -245,11 +342,13 @@ debug_r code
 7:[sataus reg. Status is different from demand] @ BRA
 8:[do SETCONDCODE]
 9:branch, true, do change pc
-104:opcode case = 4
-105:opcode case = 5
-106:opcode case = 6
-107:opcode case = 7
-108:opcode case = 8
+10:$display("Error:Immediate data can’t be destination.");
+//11:[don't need do anything] @ write_result
+//104:opcode case = 4
+//105:opcode case = 5
+//106:opcode case = 6
+//107:opcode case = 7
+//108:opcode case = 8
 110:opcode case = 10
 111:opcode case = 11
 */

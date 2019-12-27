@@ -1,2 +1,5 @@
 NOP 0 0 0
+LD 8 3 1
+ROT 8 1 1
+STR 0 1 0
 HLT 0 0 0
