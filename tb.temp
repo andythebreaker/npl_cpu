@@ -1,6 +1,6 @@
 VCD info: dumpfile cpu.vcd opened for output.
-WARNING: tb.v:117: $readmemb(mem.prog): Not enough words in the file for the requested range [0:4095].
-WARNING: tb.v:118: $readmemb(i_mem.prog): Not enough words in the file for the requested range [0:4095].
+WARNING: tb.v:118: $readmemb(mem.prog): Not enough words in the file for the requested range [0:4095].
+WARNING: tb.v:119: $readmemb(i_mem.prog): Not enough words in the file for the requested range [0:4095].
                    0 | rst=x | debug=x | debuger=  x | MEM_ADDR=   x | MEM_IN=         x | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  |  tb_debug=          x
                    1 | rst=0 | debug=1 | debuger=  x | MEM_ADDR=   x | MEM_IN=         0 | MEM_OUT=         x | MEM_CTRL=x | INS_ADDR=   x | INS_MEM=00000000000000000000000000000000  |  tb_debug=          x
                    5 | rst=1 | debug=1 | debuger=  2 | MEM_ADDR=   0 | MEM_IN=         0 | MEM_OUT=         0 | MEM_CTRL=0 | INS_ADDR=   0 | INS_MEM=00000000000000000000000000000000  |  tb_debug=          1

@@ -1,0 +1,235 @@
+$date
+	Fri Dec 27 15:51:54 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_cpu $end
+$var wire 7 ! debuger [6:0] $end
+$var wire 32 " MEM_OUT [0:31] $end
+$var wire 1 # MEM_CTRL $end
+$var wire 12 $ MEM_ADDR [11:0] $end
+$var wire 12 % INS_ADDR [11:0] $end
+$var reg 32 & INS_MEM [0:31] $end
+$var reg 32 ' MEM_IN [0:31] $end
+$var reg 1 ( clk $end
+$var reg 1 ) debug $end
+$var reg 1 * rst $end
+$var integer 32 + ot_mem [31:0] $end
+$var integer 32 , tb_debug [31:0] $end
+$scope module cpu $end
+$var wire 12 - INS_ADDR [11:0] $end
+$var wire 32 . INS_MEM [0:31] $end
+$var wire 12 / MEM_ADDR [11:0] $end
+$var wire 1 # MEM_CTRL $end
+$var wire 32 0 MEM_IN [0:31] $end
+$var wire 32 1 MEM_OUT [0:31] $end
+$var wire 1 ( clk $end
+$var wire 1 ) debug $end
+$var wire 7 2 debuger [6:0] $end
+$var wire 1 * rst $end
+$var reg 1 3 MEM_C $end
+$var reg 12 4 MEM_D [11:0] $end
+$var reg 32 5 MEM_O [0:31] $end
+$var reg 7 6 debug_r [6:0] $end
+$var reg 32 7 ir [31:0] $end
+$var reg 12 8 pc [11:0] $end
+$var reg 5 9 psr [4:0] $end
+$var reg 33 : result [32:0] $end
+$var reg 32 ; src1 [31:0] $end
+$var reg 32 < src2 [31:0] $end
+$var reg 1 = temp_checkcond $end
+$var integer 32 > i [31:0] $end
+$scope function getdst $end
+$var reg 32 ? getdst [31:0] $end
+$var reg 32 @ in [31:0] $end
+$upscope $end
+$scope function getsrc $end
+$var reg 32 A getsrc [31:0] $end
+$var reg 32 B in [31:0] $end
+$upscope $end
+$scope function setcondcode $end
+$var reg 33 C res [32:0] $end
+$var reg 7 D setcondcode [6:0] $end
+$upscope $end
+$upscope $end
+$scope begin always_INS_ADDR $end
+$upscope $end
+$scope begin always_MEM_ADDR $end
+$upscope $end
+$scope begin always_MEM_OUT $end
+$upscope $end
+$scope begin main_loop $end
+$upscope $end
+$scope begin monitor $end
+$upscope $end
+$scope begin prog_load $end
+$upscope $end
+$scope begin stop $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx D
+bx C
+bx B
+bx A
+bx @
+bx ?
+bx >
+x=
+bx <
+bx ;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+bx 5
+bx 4
+x3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+bx -
+bx ,
+b0 +
+x*
+x)
+x(
+bx '
+bx &
+bx %
+bx $
+x#
+bx "
+bx !
+$end
+#1000
+b0 7
+b0 &
+b0 .
+b0 '
+b0 0
+1)
+0(
+0*
+#5000
+b1 ,
+0#
+03
+0=
+b0 "
+b0 1
+b0 5
+b0 $
+b0 /
+b0 4
+b0 %
+b0 -
+b0 8
+b0 9
+b0 :
+b0 <
+b0 ;
+b10000 >
+b10 !
+b10 2
+b10 6
+1*
+#9000
+0*
+b1010 +
+#50000
+b101000000000000100000000000001 &
+b101000000000000100000000000001 .
+b11 !
+b11 2
+b11 6
+b1 %
+b1 -
+b1 8
+1(
+#100000
+b101000000000000100000000000001 7
+0(
+#150000
+bx '
+bx 0
+b1111000111111111111000000000001 &
+b1111000111111111111000000000001 .
+b1000 !
+b1000 2
+b1000 6
+b1000 D
+b110 9
+b100 C
+b100 $
+b100 /
+b100 4
+b10 %
+b10 -
+b10 8
+1(
+#200000
+b1111000111111111111000000000001 7
+0(
+#250000
+b110000000000000001000000000000 &
+b110000000000000001000000000000 .
+b1000 C
+b1000 :
+b100 <
+b100 ?
+b1111000111111111111000000000001 @
+b111111111111 ;
+b111111111111 A
+b1111000111111111111000000000001 B
+b110 9
+b11 %
+b11 -
+b11 8
+1(
+#300000
+b110000000000000001000000000000 7
+0(
+#350000
+b0 '
+b0 0
+b10010000000000000000000000000000 &
+b10010000000000000000000000000000 .
+b1000 "
+b1000 1
+b1000 5
+b0 $
+b0 /
+b0 4
+1#
+13
+b110 9
+b100 %
+b100 -
+b100 8
+1(
+#400000
+b10010000000000000000000000000000 7
+0(
+#450000
+b1010 +
+bx &
+bx .
+b101 !
+b101 2
+b101 6
+b101 %
+b101 -
+b101 8
+0#
+03
+1(
